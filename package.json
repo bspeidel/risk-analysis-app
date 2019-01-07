@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +20,12 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "angularfire2": "^5.1.1",
+    "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
+    "firebase": "^5.7.2",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
