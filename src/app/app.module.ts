@@ -22,7 +22,7 @@ import { Routes } from '@angular/router';
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'customer', component: CustomerListComponent },
+  { path: 'customers', component: CustomerListComponent },
   { path: 'customer/view/:id', component: SingleCustomerComponent },
 ];
 @NgModule({
