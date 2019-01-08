@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService],
     component: SingleCustomerComponent,
   },
-  { path: '', redirectTo: 'boocustomerss', pathMatch: 'full' },
+  { path: '', redirectTo: 'customers', pathMatch: 'full' },
   { path: '**', redirectTo: 'customers' },
 ];
 @NgModule({
