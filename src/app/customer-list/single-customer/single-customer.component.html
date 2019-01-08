@@ -1,4 +1,53 @@
-<h2>{{ company }}</h2>
-<p>Betriebsart : {{ companyType }}</p>
-<p>Ansprechpartner</p>
-<a routerLink="/customers">zurück</a>
+<app-header></app-header>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col">
+      <h2>{{ company }}</h2>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <form class="form-inline my-2 my-lg-0">
+        <button type="button" class="btn btn-success">
+          <i class="fas fa-check"></i> speichern
+        </button>
+        <button type="button" class="btn btn-danger ml-2">
+          <i class="fas fa-times"></i> abbrechen
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="line"></div>
+  <form [formGroup]="formCustomer">
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input type="text" class="form-control" id="company" formControlName="company">
+    </div>
+    <div class="form-group">
+      <label for="companyType"></label>
+      <input type="text" class="form-control" id="companyType" formControlName="companyType">
+    </div>
+    <div class="form-group">
+      <label for="contact"></label>
+      <input type="text" class="form-control" id="contact" formControlName="contact">
+    </div>
+    <div class="form-group">
+      <label for="street"></label>
+      <input type="text" class="form-control" id="street" formControlName="street">
+    </div>
+    <div class="form-group">
+      <label for="zipCode"></label>
+      <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
+    </div>
+    <div class="form-group">
+      <label for="city"></label>
+      <input type="text" class="form-control" id="city" formControlName="city">
+    </div>
+    <div class="form-group">
+      <label for="phone"></label>
+      <input type="text" class="form-control" id="phone" formControlName="phone">
+    </div>
+    <div class="form-group">
+      <label for="email"></label>
+      <input type="text" class="form-control" id="email" formControlName="email">
+    </div>
+  </form>
+</div>

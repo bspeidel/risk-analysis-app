@@ -1,6 +1,5 @@
 import { CustomersService } from './../services/customers.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { from } from 'rxjs';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -11,7 +10,6 @@ import { Subscription } from 'rxjs/Subscription';
 export class CustomerListComponent implements OnInit, OnDestroy {
   customers: any[];
   customerSubscription: Subscription;
-
   constructor(private customersService: CustomersService) {}
 
   ngOnInit() {
@@ -20,7 +18,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.customers = customers;
       }
     );
-
     this.customersService.emitCustomerSubject();
   }
 
