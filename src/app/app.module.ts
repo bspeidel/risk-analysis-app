@@ -23,8 +23,18 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'customers', component: CustomerListComponent },
-  { path: 'customer/view/:id', component: SingleCustomerComponent },
+  {
+    path: 'customers',
+    canActivate: [AuthGuardService],
+    component: CustomerListComponent,
+  },
+  {
+    path: 'customer/view/:id',
+    canActivate: [AuthGuardService],
+    component: SingleCustomerComponent,
+  },
+  { path: '', redirectTo: 'boocustomerss', pathMatch: 'full' },
+  { path: '**', redirectTo: 'customers' },
 ];
 @NgModule({
   imports: [
