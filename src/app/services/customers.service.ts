@@ -8,6 +8,7 @@ export class CustomersService {
   customerSubject = new Subject<any[]>();
   private customers = [
     {
+      id: 1,
       company: 'Heidelberger Druckmaschinen AG',
       companyType: 'Maschinenerstellung',
       contact: 'Ute Wechsler',
@@ -18,6 +19,7 @@ export class CustomersService {
       email: 'ute.wechsler@heidelberg.de',
     },
     {
+      id: 2,
       company: 'Carl Zeiss AG',
       companyType: 'Feinmechanisch-optischen Industrie',
       contact: 'Katrin Wurfel',
@@ -28,6 +30,7 @@ export class CustomersService {
       email: 'k.wurfel@zeiss.de',
     },
     {
+      id: 3,
       company: 'Bosch Thermotechnik GmbH',
       companyType: 'Heizungstechnik',
       contact: 'Katrin Maier',
@@ -38,6 +41,7 @@ export class CustomersService {
       email: 'k.maier@armyspy.com',
     },
     {
+      id: 4,
       company: 'Linde Material Handling GmbH',
       companyType: 'Hersteller von Lagertechnikgeräten',
       contact: 'Phillipp Koehler',
@@ -48,6 +52,7 @@ export class CustomersService {
       email: 'p.koehler@gmx.de',
     },
     {
+      id: 5,
       company: 'ThyssenKrupp Rasselstein GmbH',
       companyType: 'Weißblechhersteller',
       contact: 'Lucas Maier',
@@ -58,6 +63,7 @@ export class CustomersService {
       email: 'l.maier@thyssenkrupp.de',
     },
     {
+      id: 6,
       company: 'Wieland-Werke AG',
       companyType: 'Herstellung von Werkzeugmaschinen',
       contact: 'Anne Friedman',
@@ -68,6 +74,7 @@ export class CustomersService {
       email: 'anne.friedman@wieland.de',
     },
     {
+      id: 7,
       company: 'Umicore AG & Co. KG',
       companyType: 'Materialtechnologie- und Recycling',
       contact: 'Martin Konig',
@@ -78,6 +85,7 @@ export class CustomersService {
       email: 'martinkonig@teleworm.de',
     },
     {
+      id: 8,
       company: 'Alfred Kärcher GmbH & Co. KG',
       companyType: 'Herstellung von Besen und Bürsten',
       contact: 'Julia Strauss',
@@ -88,6 +96,7 @@ export class CustomersService {
       email: 'juliastrauss@rhyta.com',
     },
     {
+      id: 9,
       company: 'Bosch Thermotechnik GmbH',
       companyType: 'Heizungstechnik',
       contact: 'Ute Maier',
@@ -98,6 +107,7 @@ export class CustomersService {
       email: 'ute.maier@bosch.de',
     },
     {
+      id: 10,
       company: 'TLG Immobilien',
       companyType: 'Gewerbe­immobilien',
       contact: 'Michael Zahn',
@@ -108,6 +118,7 @@ export class CustomersService {
       email: 'm.zahn@tlg.de',
     },
     {
+      id: 11,
       company: 'Zeppelin GmbH',
       companyType: 'Handel, Engineering und Dienstleistung',
       contact: 'Christian Reinhard',
@@ -118,6 +129,7 @@ export class CustomersService {
       email: 'c.reinhard@zeppelin.com',
     },
     {
+      id: 12,
       company: 'Bosch Thermotechnik GmbH',
       companyType: 'Heizungstechnik',
       contact: 'Leonie Farber',
@@ -132,5 +144,12 @@ export class CustomersService {
 
   emitCustomerSubject() {
     this.customerSubject.next(this.customers.slice());
+  }
+
+  getCustomerById(id: number) {
+    const customer = this.customers.find(s => {
+      return s.id === id;
+    });
+    return customer;
   }
 }

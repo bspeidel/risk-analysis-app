@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     component: CustomerListComponent,
   },
   {
-    path: 'customer/view/:id',
+    path: 'customers/:id',
     canActivate: [AuthGuardService],
     component: SingleCustomerComponent,
   },
