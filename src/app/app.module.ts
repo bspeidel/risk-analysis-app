@@ -18,6 +18,7 @@ import { CustomersService } from './services/customers.service';
 import { AnalysisService } from './services/analysis.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { Routes } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     CustomerListComponent,
     SingleCustomerComponent,
     HeaderComponent,
+    SidebarComponent,
   ],
   providers: [AuthService, CustomersService, AnalysisService, AuthGuardService],
   bootstrap: [AppComponent],

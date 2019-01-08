@@ -1,20 +1,35 @@
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <a routerLink="customers">Kunden</a>
-      </li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
       <li routerLinkActive="active" *ngIf="!isAuth">
-        <a routerLink="auth/signup">Konto erstellen</a>
+        <a routerLink="../auth/signup">Konto erstellen</a>
       </li>
       <li routerLinkActive="active" *ngIf="!isAuth">
-        <a routerLink="auth/signin">login</a>
-      </li>
-      <li>
-        <a (click)="onSignOut()" style="cursor:pointer" *ngIf="isAuth">logout</a>
+        <a routerLink="../auth/signin">login</a>
       </li>
     </ul>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-top sticky-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="sidebar-header text-center">
+      <img class="fixed" src="#" alt="">
+    </div>
+    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-align-justify"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="customers"><i class="fas fa-users"></i> Kunden</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="onSignOut()" style="cursor:pointer" class="nav-link" *ngIf="isAuth"><i class="fas fa-sign-out-alt"></i>
+            Abmelden</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

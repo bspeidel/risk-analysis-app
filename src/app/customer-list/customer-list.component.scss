@@ -1,0 +1,39 @@
+.line {
+  width: 100%;
+  height: 1px;
+  margin: 40px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.card-columns {
+  column-count: 4;
+}
+
+.card-header {
+  padding: .5rem 1.25rem;
+  background: linear-gradient(135deg, #eef1f5, #fff);
+}
+
+.card-body {
+  background-color: rgba(242, 240, 238, .5);
+}
+
+.card-footer {
+  background-color: #eef1f5;
+}
+
+.card-title-img {
+  margin-top: -40px;
+  padding: 2px 20px;
+  color: #006;
+  background-color: rgba(255, 255, 255, .7);
+}
+
+.card-header h5 {
+  margin-bottom: 0;
+  line-height: 38px;
+
+  .btn {
+    min-width: 170px;
+  }
+}

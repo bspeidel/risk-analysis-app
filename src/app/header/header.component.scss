@@ -1,0 +1,22 @@
+.navbar-light .navbar-nav .nav-link {
+  color: #4066b3;
+}
+
+.navbar-top {
+  padding: 25px 10px;
+  border: none;
+  border-bottom: 5px #4f90c7 solid;
+  border-radius: 0;
+  background: #fff;
+
+  .navbar-nav .nav-link {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .navbar-btn {
+    border: none;
+    outline: none !important;
+    box-shadow: none;
+  }
+}

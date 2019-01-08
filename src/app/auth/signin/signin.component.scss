@@ -1,0 +1,93 @@
+$text-light: #4066b3;
+
+.login-dark {
+  position: relative;
+  height: 100vh;
+  background: #475d62 url(../../../assets/images/pexels-photo-860379.jpeg);
+  background-size: cover;
+
+  .title {
+    margin: 30px 0;
+    color: $text-light;
+    text-align: center;
+  }
+
+  form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 320px;
+    padding: 40px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $text-light;
+      opacity: 1;
+      /* Firefox */
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $text-light;
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $text-light;
+    }
+
+    .form-control {
+      border: none;
+      border-bottom: 1px solid $text-light;
+      border-radius: 0;
+      outline: none;
+      color: inherit;
+      background: none;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      margin-top: 26px;
+      padding: 11px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      text-shadow: none;
+      background: #4f90c6;
+      box-shadow: none;
+    }
+
+    .btn-primary:hover,
+    .login-dark form,
+    .btn-primary:active {
+      outline: none;
+      background: #4f90c6;
+    }
+
+    .forgot {
+      display: block;
+      color: $text-light;
+      font-size: 12px;
+      text-align: center;
+      text-decoration: none;
+      opacity: .9;
+    }
+
+    .forgot:hover,
+    .login-dark form,
+    .forgot:active {
+      text-decoration: none;
+      opacity: 1;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+  }
+}
