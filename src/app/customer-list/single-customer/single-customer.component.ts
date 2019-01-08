@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from './../../services/customers.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-single-customer',
@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 })
 export class SingleCustomerComponent implements OnInit {
   company: string;
+  customerForm: FormGroup;
   companyType: string;
   contact: string;
   street: string;
@@ -20,6 +21,7 @@ export class SingleCustomerComponent implements OnInit {
   formCustomer: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private customersService: CustomersService,
     private route: ActivatedRoute
   ) {}
@@ -38,15 +40,15 @@ export class SingleCustomerComponent implements OnInit {
   }
 
   initForm() {
-    this.formCustomer = new FormGroup({
-      company: new FormControl(this.company),
-      companyType: new FormControl(this.companyType),
-      contact: new FormControl(this.contact),
-      street: new FormControl(this.street),
-      zipCode: new FormControl(this.zipCode),
-      city: new FormControl(this.city),
-      phone: new FormControl(this.phone),
-      email: new FormControl(this.email),
+    this.customerForm = this.formBuilder.group({
+      company: [this.company, Validators.required],
+      companyType: this.companyType,
+      contact: this.contact,
+      street: this.street,
+      zipCode: this.zipCode,
+      city: this.city,
+      phone: this.phone,
+      email: [this.email, Validators.email],
     });
   }
 }

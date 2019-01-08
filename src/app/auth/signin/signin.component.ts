@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
-        [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)],
+        [Validators.required, Validators.pattern(/[0-9a-zA-Z]{3,}/)],
       ],
     });
   }
