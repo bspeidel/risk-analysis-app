@@ -16,79 +16,22 @@
   </div>
   <div class="line"></div>
   <div class="card-columns user">
-    <div class="card">
+    <div class="card" *ngFor="let customer of customers">
       <div class="card-header">
-        <h5 class="card-title">Heidelberger Druckmaschinen AG
+        <h5 class="card-title">{{ customer.company }}
           <span class="float-sm-right">
             <a href="#"><i class="fas fa-edit"></i></a>
           </span>
         </h5>
       </div>
       <div class="card-body">
-        <strong>Betriebsart:</strong> Maschinenerstellung
-        <p class="card-text"><strong>Ansprechpartner:</strong> Ute Wechsler</p>
+        <strong>Betriebsart:</strong> {{ customer.companyType}}
+        <p class="card-text"><strong>Ansprechpartner:</strong> {{ customer.contact }}</p>
         <address>
-          Kurfürsten-Anlage 52-60<br>
-          69115 Heidelberg<br>
-          Tel: 6221 92 00<br>
-          E-Mail: <a href="mailto:#">ute.wechsler@heidelberg.de</a>
-        </address>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title">Heidelberger Druckmaschinen AG
-          <span class="float-sm-right">
-            <a href="#"><i class="fas fa-edit"></i></a>
-          </span>
-        </h5>
-      </div>
-      <div class="card-body">
-        <strong>Betriebsart:</strong> Maschinenerstellung
-        <p class="card-text"><strong>Ansprechpartner:</strong> Ute Wechsler</p>
-        <address>
-          Kurfürsten-Anlage 52-60<br>
-          69115 Heidelberg<br>
-          Tel: 6221 92 00<br>
-          E-Mail: <a href="mailto:#">ute.wechsler@heidelberg.de</a>
-        </address>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title">Heidelberger Druckmaschinen AG
-          <span class="float-sm-right">
-            <a href="#"><i class="fas fa-edit"></i></a>
-          </span>
-        </h5>
-      </div>
-      <div class="card-body">
-        <strong>Betriebsart:</strong> Maschinenerstellung
-        <p class="card-text"><strong>Ansprechpartner:</strong> Ute Wechsler</p>
-        <address>
-          Kurfürsten-Anlage 52-60<br>
-          69115 Heidelberg<br>
-          Tel: 6221 92 00<br>
-          E-Mail: <a href="mailto:#">ute.wechsler@heidelberg.de</a>
-        </address>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title">Heidelberger Druckmaschinen AG
-          <span class="float-sm-right">
-            <a href="#"><i class="fas fa-edit"></i></a>
-          </span>
-        </h5>
-      </div>
-      <div class="card-body">
-        <strong>Betriebsart:</strong> Maschinenerstellung
-        <p class="card-text"><strong>Ansprechpartner:</strong> Ute Wechsler</p>
-        <address>
-          Kurfürsten-Anlage 52-60<br>
-          69115 Heidelberg<br>
-          Tel: 6221 92 00<br>
-          E-Mail: <a href="mailto:#">ute.wechsler@heidelberg.de</a>
+          {{ customer.street }}<br>
+          {{ customer.zipcode }} {{ customer.city }}<br>
+          Tel: {{ customer.phone }}<br>
+          E-Mail: <a href="mailto:#">{{ customer.email }}</a>
         </address>
       </div>
     </div>
