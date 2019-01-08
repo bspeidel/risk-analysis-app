@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from './../../services/customers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -23,7 +23,8 @@ export class SingleCustomerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private customersService: CustomersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,5 +51,19 @@ export class SingleCustomerComponent implements OnInit {
       phone: this.phone,
       email: [this.email, Validators.email],
     });
+  }
+
+  onSubmit() {
+    const formValue = this.customerForm.value;
+    const id = this.route.snapshot.params['id'];
+    this.customersService.getCustomerById(+id).company = formValue.company;
+    this.customersService.getCustomerById(+id).companyType =
+      formValue.companyType;
+    this.customersService.getCustomerById(+id).street = formValue.street;
+    this.customersService.getCustomerById(+id).zipCode = formValue.zipCode;
+    this.customersService.getCustomerById(+id).city = formValue.city;
+    this.customersService.getCustomerById(+id).phone = formValue.phone;
+    this.customersService.getCustomerById(+id).email = formValue.email;
+    this.router.navigate(['/customers']);
   }
 }
