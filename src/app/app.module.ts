@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,32 +17,15 @@ import { AuthService } from './services/auth.service';
 import { CustomersService } from './services/customers.service';
 import { AnalysisService } from './services/analysis.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { Routes } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
-const appRoutes: Routes = [
-  { path: 'auth/signup', component: SignupComponent },
-  { path: 'auth/signin', component: SigninComponent },
-  {
-    path: 'customers',
-    canActivate: [AuthGuardService],
-    component: CustomerListComponent,
-  },
-  {
-    path: 'customers/:id',
-    canActivate: [AuthGuardService],
-    component: SingleCustomerComponent,
-  },
-  { path: '', redirectTo: 'customers', pathMatch: 'full' },
-  { path: '**', redirectTo: 'customers' },
-];
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
