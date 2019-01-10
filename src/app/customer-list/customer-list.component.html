@@ -16,7 +16,7 @@
   </div>
   <div class="line"></div>
   <div class="card-columns user">
-    <div class="card" *ngFor="let customer of customers, let i = index">
+    <div class="card" *ngFor="let customer of customers | async, let i = index">
       <div class="card-header">
         <h5 class="card-title">{{ customer.company }}
           <span class="float-sm-right">
