@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { FirestoreDataService } from './../services/firestore-data.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -12,14 +13,16 @@ import { Observable } from 'rxjs';
 export class CustomerListComponent implements OnInit, OnDestroy {
   customers: Observable<any[]>;
   customerSubscription: Subscription;
+  arr: CustomersService[] = [];
 
-  constructor(
-    private customersService: CustomersService,
-    private db: AngularFirestore
-  ) {}
+  constructor(public _data: FirestoreDataService) {}
 
   ngOnInit() {
-    this.customers = this.db.collection('customers').valueChanges();
+    /*     this.customers = this.db.collection('customers').valueChanges(); */
+    this._data.getCustomers().subscribe((customer: CustomersService[]) => {
+      this.arr = customer;
+      console.log(this.arr);
+    });
   }
 
   ngOnDestroy() {

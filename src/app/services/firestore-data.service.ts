@@ -13,30 +13,22 @@ import 'rxjs/add/operator/map';
 })
 export class FirestoreDataService {
   customerscollection: AngularFirestoreCollection<CustomerService>;
-  customers: Observable<CustomerService[]>;
+  customers: Observable<any[]>;
   customerDoc: AngularFirestoreDocument<CustomerService>;
-  constructor(public _afs: AngularFirestore) {
-    this.customers = this._afs.collection('Customers').valueChanges();
-
-    /*     this.customerscollection = this._afs.collection('Customers', x =>
-      x.orderBy('company', 'asc')
-    );
-    this.customers = this.customerscollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as CustomerService;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    }); */
+  constructor(public db: AngularFirestore) {
+    this.customers = this.db.collection('customers').valueChanges();
   }
+
   getCustomers() {
     return this.customers;
   }
+
   addCustomer(customer) {
     this.customerscollection.add(customer);
   }
+
   deleteCustomer(customer) {
-    this.customerDoc = this._afs.doc('Customer/${customer.id}');
+    this.customerDoc = this.db.doc('Customer/${customer.id}');
     this.customerDoc.delete();
   }
 }
