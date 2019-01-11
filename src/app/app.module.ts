@@ -15,6 +15,7 @@ import { AnalysisListComponent } from './analysis-list/analysis-list.component';
 import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
+import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
 import { HeaderComponent } from './header/header.component';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
@@ -53,6 +54,7 @@ import { FirestoreDataService } from './services/firestore-data.service';
     AuthGuardService,
     CustomerService,
     FirestoreDataService,
+    UpdateCustomerResolver,
   ],
   bootstrap: [AppComponent],
 })

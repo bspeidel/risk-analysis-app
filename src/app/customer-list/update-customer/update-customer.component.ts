@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from '../../services/customers.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FirestoreDataService } from './../../services/firestore-data.service';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-update-customer',
@@ -9,61 +15,56 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./update-customer.component.scss'],
 })
 export class UpdateCustomerComponent implements OnInit {
-  company: string;
+  customer: any;
   customerForm: FormGroup;
-  companyType: string;
-  contact: string;
-  street: string;
-  zipCode: string;
-  city: string;
-  phone: string;
-  email: string;
-  formCustomer: FormGroup;
+  company: string;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private customersService: CustomersService,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public firebaseService: FirestoreDataService
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.company = this.customersService.getCustomerById(+id).company;
-    this.companyType = this.customersService.getCustomerById(+id).companyType;
-    this.contact = this.customersService.getCustomerById(+id).contact;
-    this.street = this.customersService.getCustomerById(+id).street;
-    this.zipCode = this.customersService.getCustomerById(+id).zipCode;
-    this.city = this.customersService.getCustomerById(+id).city;
-    this.phone = this.customersService.getCustomerById(+id).phone;
-    this.email = this.customersService.getCustomerById(+id).email;
-    this.initForm();
-  }
+    this.customerForm = new FormGroup({
+      company: new FormControl(),
+      companyType: new FormControl(),
+      contact: new FormControl(),
+      street: new FormControl(),
+      zipCode: new FormControl(),
+      city: new FormControl(),
+      phone: new FormControl(),
+      email: new FormControl(),
+    });
 
-  initForm() {
-    this.customerForm = this.formBuilder.group({
-      company: [this.company, Validators.required],
-      companyType: this.companyType,
-      contact: this.contact,
-      street: this.street,
-      zipCode: this.zipCode,
-      city: this.city,
-      phone: this.phone,
-      email: [this.email, Validators.email],
+    this.route.data.subscribe(routeData => {
+      let data = routeData['data'];
+      this.company = data.payload.data().company;
+      if (data) {
+        this.customer = data.payload.data();
+        this.customer.id = data.payload.id;
+        this.initForm();
+      }
     });
   }
 
-  onSubmit() {
-    const formValue = this.customerForm.value;
-    const id = this.route.snapshot.params['id'];
-    this.customersService.getCustomerById(+id).company = formValue.company;
-    this.customersService.getCustomerById(+id).companyType =
-      formValue.companyType;
-    this.customersService.getCustomerById(+id).street = formValue.street;
-    this.customersService.getCustomerById(+id).zipCode = formValue.zipCode;
-    this.customersService.getCustomerById(+id).city = formValue.city;
-    this.customersService.getCustomerById(+id).phone = formValue.phone;
-    this.customersService.getCustomerById(+id).email = formValue.email;
+  initForm() {
+    this.customerForm = this.fb.group({
+      company: [this.customer.company, Validators.required],
+      companyType: this.customer.companyType,
+      contact: this.customer.contact,
+      street: this.customer.street,
+      zipCode: this.customer.zipCode,
+      city: this.customer.city,
+      phone: this.customer.phone,
+      email: [this.customer.email, Validators.email],
+    });
+  }
+
+  onSubmit(value) {
+    console.log(value);
+    this.firebaseService.updateCustomer(this.customer.id, value);
     this.router.navigate(['customers']);
   }
 }

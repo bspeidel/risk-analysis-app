@@ -5,6 +5,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
+import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
 const routes: Routes = [
@@ -16,12 +17,13 @@ const routes: Routes = [
     component: CustomerListComponent,
   },
   {
-    path: 'customers/update/:id',
+    path: 'update/:id',
     canActivate: [AuthGuardService],
     component: UpdateCustomerComponent,
+    resolve: { data: UpdateCustomerResolver },
   },
   {
-    path: 'customers/new',
+    path: 'new-customer',
     canActivate: [AuthGuardService],
     component: NewCustomerComponent,
   },

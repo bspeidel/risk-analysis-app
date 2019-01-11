@@ -9,7 +9,7 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./new-customer.component.scss'],
 })
 export class NewCustomerComponent implements OnInit {
-  private router: Router;
+  company: string = '';
 
   arr: CustomerService[] = [];
   model = {
@@ -22,13 +22,13 @@ export class NewCustomerComponent implements OnInit {
     phone: '',
     email: '',
   };
-  constructor(public _data: FirestoreDataService) {}
+  constructor(
+    public _data: FirestoreDataService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    this._data.getCustomers().subscribe((customer: CustomerService[]) => {
-      this.arr = customer;
-    });
-  }
+  ngOnInit() {}
 
   customerSubmit() {
     this._data.addCustomer(this.model);
@@ -41,6 +41,6 @@ export class NewCustomerComponent implements OnInit {
     this.model.phone = '';
     this.model.email = '';
     /*    console.log(value); */
-    /*    this.router.navigate(['customers']); */
+    this.router.navigate(['customers']);
   }
 }

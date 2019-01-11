@@ -8,7 +8,7 @@
       <form class="form-inline my-2 my-lg-0">
         <input type="search" placeholder="kunden suchen..." name="search" class="form-control searchbox-input mr-sm-2"
           required="">
-        <button routerLink="customers/new" type="button" class="btn btn-success">
+        <button (click)="newCustomer()" type="button" class="btn btn-success">
           <i class="fas fa-user-plus"></i> Kunde hinzufügen
         </button>
       </form>
@@ -18,20 +18,20 @@
   <div class="card-columns user">
     <div class="card" *ngFor="let customer of customers, let i = index">
       <div class="card-header">
-        <h5 class="card-title">{{ customer.company }}
+        <h5 class="card-title">{{ customer.payload.doc.data().company }}
           <span class="float-sm-right">
-            <a><i class="fas fa-edit"></i></a>
+            <a (click)="viewDetails(customer)"><i class="fas fa-edit"></i></a>
           </span>
         </h5>
       </div>
       <div class="card-body">
-        <strong>Betriebsart:</strong> {{ customer.companyType}}
-        <p class="card-text"><strong>Ansprechpartner:</strong> {{ customer.contact }}</p>
+        <strong>Betriebsart:</strong> {{ customer.payload.doc.data().companyType}}
+        <p class="card-text"><strong>Ansprechpartner:</strong> {{ customer.payload.doc.data().contact }}</p>
         <address>
-          {{ customer.street }}<br>
-          {{ customer.zipcode }} {{ customer.city }}<br>
-          Tel: {{ customer.phone }}<br>
-          E-Mail: <a href="mailto:#">{{ customer.email }}</a>
+          {{ customer.payload.doc.data().street }}<br>
+          {{ customer.payload.doc.data().zipcode }} {{ customer.payload.doc.data().city }}<br>
+          Tel: {{ customer.payload.doc.data().phone }}<br>
+          E-Mail: <a href="mailto:#">{{ customer.payload.doc.data().email }}</a>
         </address>
       </div>
     </div>

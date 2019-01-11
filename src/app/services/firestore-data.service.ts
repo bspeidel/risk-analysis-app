@@ -19,11 +19,26 @@ export class FirestoreDataService {
   }
 
   getCustomers() {
-    return this.customers;
+    return this.db.collection('customers').snapshotChanges();
+  }
+
+  getCustomer(customerKey) {
+    return this.db
+      .collection('customers')
+      .doc(customerKey)
+      .snapshotChanges();
   }
 
   addCustomer(customer) {
     this.db.collection('customers').add(customer);
+  }
+
+  updateCustomer(customerKey, value) {
+    value.nameToSearch = value.company.toLowerCase();
+    return this.db
+      .collection('customers')
+      .doc(customerKey)
+      .set(value);
   }
 
   deleteCustomer(customer) {
