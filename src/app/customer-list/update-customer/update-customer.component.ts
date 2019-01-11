@@ -62,7 +62,6 @@ export class UpdateCustomerComponent implements OnInit {
   }
 
   onSubmit(value) {
-    console.log(value);
     this.firebaseService.updateCustomer(this.customer.id, value);
     this.router.navigate(['customers']);
   }
