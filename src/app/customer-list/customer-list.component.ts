@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { FirestoreDataService } from './../services/firestore-data.service';
+import { FirebaseService } from '../services/firebase.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,25 +11,37 @@ import { Router } from '@angular/router';
 export class CustomerListComponent implements OnInit {
   customers: any[];
   customerSubscription: Subscription;
+  searchValue: string = '';
+  name_filtered_items: Array<any>;
 
-  constructor(public _data: FirestoreDataService, private router: Router) {}
+  constructor(
+    public firebaseService: FirebaseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getData();
   }
 
   getData() {
-    this._data.getCustomers().subscribe((customers: any[]) => {
+    this.firebaseService.getCustomers().subscribe((customers: any[]) => {
       this.customers = customers;
+      this.name_filtered_items = customers;
     });
   }
 
   viewDetails(customer) {
-    console.log(customer.payload.doc.id);
     this.router.navigate(['/update/' + customer.payload.doc.id]);
   }
 
   newCustomer() {
     this.router.navigate(['/new-customer']);
+  }
+
+  searchByName() {
+    let value = this.searchValue.toLowerCase();
+    this.firebaseService.searchCustomers(value).subscribe(result => {
+      this.name_filtered_items = result;
+    });
   }
 }

@@ -1,9 +1,9 @@
 <app-header></app-header>
 <div class="container-fluid mt-4">
-  <form (ngSubmit)="customerSubmit()">
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
     <div class="row">
       <div class="col">
-        <h4><i class="fas fa-user-plus"></i> {{ company }}</h4>
+        <h4><i class="fas fa-edit"></i> {{ company }}</h4>
       </div>
       <div class="col d-flex justify-content-end">
         <button type="submit" class="btn btn-success">
@@ -17,43 +17,35 @@
     <div class="line"></div>
     <div class="form-group">
       <label for="company">Company</label>
-      <input type="text" class="form-control" id="company" [(ngModel)]="model.company" [ngModelOptions]="{standalone: true}"
-        [(ngModel)]="company">
+      <input type="text" class="form-control" id="company" formControlName="company">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="companyType">Betriebsart</label>
-      <input type="text" class="form-control" id="companyType" [(ngModel)]="model.companyType" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="companyType" formControlName="companyType">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="contact">Ansprechpartner</label>
-      <input type="text" class="form-control" id="contact" [(ngModel)]="model.contact" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="contact" formControlName="contact">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="street">Strasse</label>
-      <input type="text" class="form-control" id="street" [(ngModel)]="model.street" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="street" formControlName="street">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="zipCode">PLZ</label>
-      <input type="text" class="form-control" id="zipCode" [(ngModel)]="model.zipCode" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="city">Stadt</label>
-      <input type="text" class="form-control" id="city" [(ngModel)]="model.city" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="city" formControlName="city">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="phone">Telefon</label>
-      <input type="text" class="form-control" id="phone" [(ngModel)]="model.phone" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="phone" formControlName="phone">
     </div>
-    <div class="
-        form-group">
+    <div class="form-group">
       <label for="email">E-Mail</label>
-      <input type="text" class="form-control" id="email" [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" id="email" formControlName="email">
     </div>
   </form>
 </div>

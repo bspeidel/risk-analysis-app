@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -20,11 +21,9 @@ import { HeaderComponent } from './header/header.component';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
 import { AuthService } from './services/auth.service';
-import { CustomersService } from './services/customers.service';
-import { CustomerService } from './services/customer.service';
 import { AnalysisService } from './services/analysis.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { FirestoreDataService } from './services/firestore-data.service';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   imports: [
@@ -49,12 +48,11 @@ import { FirestoreDataService } from './services/firestore-data.service';
   ],
   providers: [
     AuthService,
-    CustomersService,
     AnalysisService,
     AuthGuardService,
-    CustomerService,
-    FirestoreDataService,
+    FirebaseService,
     UpdateCustomerResolver,
+    AngularFireAuth,
   ],
   bootstrap: [AppComponent],
 })

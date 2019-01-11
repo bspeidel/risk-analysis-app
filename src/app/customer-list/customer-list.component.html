@@ -7,7 +7,7 @@
     <div class="col d-flex justify-content-end">
       <form class="form-inline my-2 my-lg-0">
         <input type="search" placeholder="kunden suchen..." name="search" class="form-control searchbox-input mr-sm-2"
-          required="">
+          required="" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" (keyup)="searchByName()">
         <button (click)="newCustomer()" type="button" class="btn btn-success">
           <i class="fas fa-user-plus"></i> Kunde hinzufügen
         </button>

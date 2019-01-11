@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from '../../services/customers.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FirestoreDataService } from './../../services/firestore-data.service';
+import { FirebaseService } from '../../services/firebase.service';
 import {
   FormGroup,
   FormBuilder,
@@ -23,7 +22,7 @@ export class UpdateCustomerComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    public firebaseService: FirestoreDataService
+    public firebaseService: FirebaseService
   ) {}
 
   ngOnInit() {

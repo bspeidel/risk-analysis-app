@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FirestoreDataService } from './../../services/firestore-data.service';
-import { CustomerService } from '../../services/customer.service';
+import { Router } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-new-customer',
@@ -9,38 +14,53 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./new-customer.component.scss'],
 })
 export class NewCustomerComponent implements OnInit {
+  customerForm: FormGroup;
   company: string = '';
 
-  arr: CustomerService[] = [];
-  model = {
-    company: '',
-    companyType: '',
-    contact: '',
-    street: '',
-    zipCode: '',
-    city: '',
-    phone: '',
-    email: '',
+  validation_messages = {
+    company: [{ type: 'required', message: 'Company ist pflicht' }],
   };
+
   constructor(
-    public _data: FirestoreDataService,
-    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    public firebaseService: FirebaseService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createForm();
+  }
 
-  customerSubmit() {
-    this._data.addCustomer(this.model);
-    this.model.company = '';
-    this.model.companyType = '';
-    this.model.contact = '';
-    this.model.street = '';
-    this.model.zipCode = '';
-    this.model.city = '';
-    this.model.phone = '';
-    this.model.email = '';
-    /*    console.log(value); */
-    this.router.navigate(['customers']);
+  createForm() {
+    this.customerForm = this.fb.group({
+      company: ['', Validators.required],
+      companyType: '',
+      contact: '',
+      street: '',
+      zipCode: '',
+      city: '',
+      phone: '',
+      email: '',
+    });
+  }
+
+  resetFields() {
+    this.customerForm = this.fb.group({
+      company: new FormControl('', Validators.required),
+      companyType: new FormControl(''),
+      contact: new FormControl(''),
+      street: new FormControl(''),
+      zipCode: new FormControl(''),
+      city: new FormControl(''),
+      phone: new FormControl(''),
+      email: new FormControl(''),
+    });
+  }
+
+  onSubmit(value) {
+    this.firebaseService.createCustomer(value).then(res => {
+      this.resetFields();
+      this.router.navigate(['customers']);
+    });
   }
 }
