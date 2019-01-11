@@ -4,7 +4,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { SingleCustomerComponent } from './customer-list/single-customer/single-customer.component';
+import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
+import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
 const routes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -15,9 +16,14 @@ const routes: Routes = [
     component: CustomerListComponent,
   },
   {
-    path: 'customers/:id',
+    path: 'customers/update/:id',
     canActivate: [AuthGuardService],
-    component: SingleCustomerComponent,
+    component: UpdateCustomerComponent,
+  },
+  {
+    path: 'customers/new',
+    canActivate: [AuthGuardService],
+    component: NewCustomerComponent,
   },
   { path: '', redirectTo: 'customers', pathMatch: 'full' },
   { path: '**', redirectTo: 'customers' },

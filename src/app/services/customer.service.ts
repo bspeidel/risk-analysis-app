@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class CustomerService {
   public constructor(
-    public id: number,
     public company: string,
     public companyType: string,
     public contact: string,

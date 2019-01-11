@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from './../../services/customers.service';
+import { CustomersService } from '../../services/customers.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-single-customer',
-  templateUrl: './single-customer.component.html',
-  styleUrls: ['./single-customer.component.scss'],
+  selector: 'app-update-customer',
+  templateUrl: './update-customer.component.html',
+  styleUrls: ['./update-customer.component.scss'],
 })
-export class SingleCustomerComponent implements OnInit {
+export class UpdateCustomerComponent implements OnInit {
   company: string;
   customerForm: FormGroup;
   companyType: string;
@@ -64,6 +64,6 @@ export class SingleCustomerComponent implements OnInit {
     this.customersService.getCustomerById(+id).city = formValue.city;
     this.customersService.getCustomerById(+id).phone = formValue.phone;
     this.customersService.getCustomerById(+id).email = formValue.email;
-    this.router.navigate(['/customers']);
+    this.router.navigate(['customers']);
   }
 }

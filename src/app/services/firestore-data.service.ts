@@ -6,7 +6,6 @@ import {
 } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from './customer.service';
-import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +23,7 @@ export class FirestoreDataService {
   }
 
   addCustomer(customer) {
-    this.customerscollection.add(customer);
+    this.db.collection('customers').add(customer);
   }
 
   deleteCustomer(customer) {

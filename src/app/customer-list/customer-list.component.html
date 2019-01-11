@@ -8,7 +8,7 @@
       <form class="form-inline my-2 my-lg-0">
         <input type="search" placeholder="kunden suchen..." name="search" class="form-control searchbox-input mr-sm-2"
           required="">
-        <button id="btn_add_user" type="button" class="btn btn-success">
+        <button routerLink="customers/new" type="button" class="btn btn-success">
           <i class="fas fa-user-plus"></i> Kunde hinzufügen
         </button>
       </form>
@@ -20,7 +20,7 @@
       <div class="card-header">
         <h5 class="card-title">{{ customer.company }}
           <span class="float-sm-right">
-            <a [routerLink]="[customer.id]"><i class="fas fa-edit"></i></a>
+            <a><i class="fas fa-edit"></i></a>
           </span>
         </h5>
       </div>
