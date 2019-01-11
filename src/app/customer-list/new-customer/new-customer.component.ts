@@ -35,7 +35,8 @@ export class NewCustomerComponent implements OnInit {
     this.customerForm = this.fb.group({
       company: ['', Validators.required],
       companyType: '',
-      contact: '',
+      firstname: '',
+      lastname: '',
       street: '',
       zipCode: '',
       city: '',
@@ -48,7 +49,8 @@ export class NewCustomerComponent implements OnInit {
     this.customerForm = this.fb.group({
       company: new FormControl('', Validators.required),
       companyType: new FormControl(''),
-      contact: new FormControl(''),
+      firstname: new FormControl(''),
+      lastname: new FormControl(''),
       street: new FormControl(''),
       zipCode: new FormControl(''),
       city: new FormControl(''),

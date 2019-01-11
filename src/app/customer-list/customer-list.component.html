@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-5">
   <div class="row">
     <div class="col">
       <h4>Alle Kunden</h4>
@@ -26,7 +26,8 @@
       </div>
       <div class="card-body">
         <strong>Betriebsart:</strong> {{ customer.payload.doc.data().companyType}}
-        <p class="card-text"><strong>Ansprechpartner:</strong> {{ customer.payload.doc.data().contact }}</p>
+        <p class="card-text"><strong>Ansprechpartner:</strong> {{ customer.payload.doc.data().firstname }} {{
+          customer.payload.doc.data().lastname }}</p>
         <address>
           {{ customer.payload.doc.data().street }}<br>
           {{ customer.payload.doc.data().zipcode }} {{ customer.payload.doc.data().city }}<br>
