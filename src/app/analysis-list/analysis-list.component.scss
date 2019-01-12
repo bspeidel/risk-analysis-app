@@ -1,0 +1,16 @@
+.list-group-item:last-child,
+.list-group-item:first-child {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #4f90c8;
+  border-color: #4f90c8;
+}
+
+a.btn,
+a.btn:hover {
+  color: #fff;
+}

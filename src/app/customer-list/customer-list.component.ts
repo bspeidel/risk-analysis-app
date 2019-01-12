@@ -13,6 +13,7 @@ export class CustomerListComponent implements OnInit {
   customerSubscription: Subscription;
   searchValue: string = '';
   name_filtered_items: Array<any>;
+  customerIdFromParent: string;
 
   constructor(
     public firebaseService: FirebaseService,
@@ -36,11 +37,6 @@ export class CustomerListComponent implements OnInit {
 
   newCustomer() {
     this.router.navigate(['/new-customer']);
-  }
-
-  newAnalysis(value) {
-    this.firebaseService.createAnalysis(value);
-    this.router.navigate(['/analysis/' + value]);
   }
 
   searchByName() {

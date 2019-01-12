@@ -36,7 +36,7 @@
         </address>
       </div>
       <div class="card-footer">
-        <a (click)="newAnalysis(customer.payload.doc.data().customerId)"><i class="fas fa-edit"></i>Analyse hinzufügen</a>
+        <app-analysis-list [customerIdFromParent]="customer.payload.doc.data().customerId"></app-analysis-list>
       </div>
     </div>
   </div>

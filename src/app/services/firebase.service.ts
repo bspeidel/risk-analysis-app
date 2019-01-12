@@ -25,6 +25,7 @@ export class FirebaseService {
   }
 
   getCustomers() {
+    console.log('userId' + this.userId);
     return this.db
       .collection('customers', ref => ref.where('userId', '==', this.userId))
       .snapshotChanges();
@@ -73,13 +74,7 @@ export class FirebaseService {
   }
 
   getAnalyses() {
-    return this.db
-      .collection('analysis', ref =>
-        ref
-          .where('userId', '==', this.userId)
-          .where('customerId', '==', this.customerId)
-      )
-      .snapshotChanges();
+    return this.db.collection('analysis').snapshotChanges();
   }
 
   getAnalysis(customerKey) {
