@@ -39,8 +39,8 @@ export class CustomerListComponent implements OnInit {
   }
 
   newAnalysis(value) {
-    console.log(value);
     this.firebaseService.createAnalysis(value);
+    this.router.navigate(['/analysis/' + value]);
   }
 
   searchByName() {

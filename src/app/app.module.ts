@@ -14,6 +14,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AnalysisListComponent } from './analysis-list/analysis-list.component';
 import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
+import { SingleAnalysisResolver } from './analysis-list/single-analysis/single-analysis.resolver';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
 import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
@@ -52,6 +53,7 @@ import { FirebaseService } from './services/firebase.service';
     AuthGuardService,
     FirebaseService,
     UpdateCustomerResolver,
+    SingleAnalysisResolver,
     AngularFireAuth,
   ],
   bootstrap: [AppComponent],

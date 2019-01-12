@@ -9,6 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class FirebaseService {
   authService: AuthService;
   userId: string;
+  customerId: string;
 
   constructor(public db: AngularFirestore, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
@@ -71,9 +72,20 @@ export class FirebaseService {
     });
   }
 
-  getAnalysis() {
+  getAnalyses() {
     return this.db
-      .collection('analysis', ref => ref.where('userId', '==', this.userId))
+      .collection('analysis', ref =>
+        ref
+          .where('userId', '==', this.userId)
+          .where('customerId', '==', this.customerId)
+      )
+      .snapshotChanges();
+  }
+
+  getAnalysis(customerKey) {
+    return this.db
+      .collection('analysis')
+      .doc(customerKey)
       .snapshotChanges();
   }
 

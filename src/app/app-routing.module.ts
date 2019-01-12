@@ -6,6 +6,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
 import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
+import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
+import { SingleAnalysisResolver } from './analysis-list/single-analysis/single-analysis.resolver';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
 const routes: Routes = [
@@ -21,6 +23,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: UpdateCustomerComponent,
     resolve: { data: UpdateCustomerResolver },
+  },
+  {
+    path: 'analysis/:id',
+    canActivate: [AuthGuardService],
+    component: SingleAnalysisComponent,
+    resolve: { data: SingleAnalysisResolver },
   },
   {
     path: 'new-customer',
