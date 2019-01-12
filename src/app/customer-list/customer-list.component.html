@@ -35,6 +35,9 @@
           E-Mail: <a href="mailto:#">{{ customer.payload.doc.data().email }}</a>
         </address>
       </div>
+      <div class="card-footer">
+        <a (click)="newAnalysis(customer.payload.doc.data().customerId)"><i class="fas fa-edit"></i>Analyse hinzufügen</a>
+      </div>
     </div>
   </div>
 </div>

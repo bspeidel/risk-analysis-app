@@ -29,8 +29,6 @@ export class FirebaseService {
       .snapshotChanges();
   }
 
-  getAnalysis() {}
-
   updateCustomer(customerKey, value) {
     value.nameToSearch = value.company.toLowerCase();
     return this.db
@@ -59,6 +57,7 @@ export class FirebaseService {
   createCustomer(value) {
     return this.db.collection('customers').add({
       userId: this.userId,
+      customerId: this.db.createId(),
       company: value.company,
       companyToSearch: value.company.toLowerCase(),
       companyType: value.companyType,
@@ -69,6 +68,21 @@ export class FirebaseService {
       city: value.city,
       phone: value.phone,
       email: value.email,
+    });
+  }
+
+  getAnalysis() {
+    return this.db
+      .collection('analysis', ref => ref.where('userId', '==', this.userId))
+      .snapshotChanges();
+  }
+
+  createAnalysis(customerId) {
+    return this.db.collection('analysis').add({
+      userId: this.userId,
+      customerId: customerId,
+      analysisId: this.db.createId(),
+      date: new Date(),
     });
   }
 }

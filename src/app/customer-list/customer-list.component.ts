@@ -38,6 +38,11 @@ export class CustomerListComponent implements OnInit {
     this.router.navigate(['/new-customer']);
   }
 
+  newAnalysis(value) {
+    console.log(value);
+    this.firebaseService.createAnalysis(value);
+  }
+
   searchByName() {
     let value = this.searchValue.toLowerCase();
     this.firebaseService.searchCustomers(value).subscribe(result => {
