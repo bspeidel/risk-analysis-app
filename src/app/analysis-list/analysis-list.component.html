@@ -5,7 +5,8 @@
 </div>
 <div *ngIf=analysisIsIsShow class="list-group mt-4">
   <span *ngFor="let analysis of analyses, let i = index">
-    <a *ngIf="(analysis.payload.doc.data().customerId == customerIdFromParent)" href="#" type="button" class="list-group-item">
+    <a (click)="updateAnalysis(analysis)" *ngIf="(analysis.payload.doc.data().customerId == customerIdFromParent)" type="button"
+      class="list-group-item">
       <i class="far fa-calendar-check"></i> Jahresgespräch
       <span class="float-sm-right">{{ analysis.payload.doc.data().date.seconds * 1000 | date: 'dd.MM.yyyy'}}</span>
     </a>
@@ -15,11 +16,12 @@
 </div>
 <div *ngIf=reportIsShow class="list-group mt-4">
   <span *ngFor="let analysis of analyses, let i = index">
-    <a *ngIf="(analysis.payload.doc.data().customerId == customerIdFromParent)" href="#" type="button" class="list-group-item">
+    <a (click)="updateAnalysis(analysis)" *ngIf="(analysis.payload.doc.data().customerId == customerIdFromParent)" type="button"
+      class="list-group-item">
       <i class="fas fa-sliders-h"></i> Analyse
       <span class="float-sm-right">{{ analysis.payload.doc.data().date.seconds * 1000 | date: 'dd.MM.yyyy'}}</span>
     </a>
   </span>
-  <a (click)="newAnalysis(customerIdFromParent)" class="btn btn-success btn-block mt-3"><i class="fas fa-plus-square"></i>
+  <a (click)="newAnalysis(customerIdFromParent, companyFromParent)" class="btn btn-success btn-block mt-3"><i class="fas fa-plus-square"></i>
     Analyse hinzufügen</a>
 </div>

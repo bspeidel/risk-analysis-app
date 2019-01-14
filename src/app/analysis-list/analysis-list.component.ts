@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AnalysisListComponent implements OnInit {
   analyses: any[];
-  customerId: string = 'TEkNdSea3eN4wFA65hg6';
   analysisSubscription: Subscription;
   analysisIsIsShow: boolean = false;
   reportIsShow: boolean = false;
 
   @Input() customerIdFromParent: string;
+  @Input() companyFromParent: string;
 
   constructor(
     public firebaseService: FirebaseService,
@@ -23,14 +23,12 @@ export class AnalysisListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.analyses);
     this.getData();
   }
 
   getData() {
     this.firebaseService.getAnalyses().subscribe((analyses: any[]) => {
       this.analyses = analyses;
-      console.log(analyses);
     });
   }
 
@@ -53,7 +51,11 @@ export class AnalysisListComponent implements OnInit {
   }
 
   newAnalysis(value) {
-    this.firebaseService.createAnalysis(value);
+    this.firebaseService.createAnalysis(value, this.companyFromParent);
     this.router.navigate(['/analysis/' + value]);
+  }
+
+  updateAnalysis(analysis) {
+    this.router.navigate(['/analysis/' + analysis.payload.doc.id]);
   }
 }

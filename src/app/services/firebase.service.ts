@@ -25,7 +25,6 @@ export class FirebaseService {
   }
 
   getCustomers() {
-    console.log('userId' + this.userId);
     return this.db
       .collection('customers', ref => ref.where('userId', '==', this.userId))
       .snapshotChanges();
@@ -77,19 +76,39 @@ export class FirebaseService {
     return this.db.collection('analysis').snapshotChanges();
   }
 
-  getAnalysis(customerKey) {
+  getAnalysis(analysisKey) {
     return this.db
       .collection('analysis')
-      .doc(customerKey)
+      .doc(analysisKey)
       .snapshotChanges();
   }
 
-  createAnalysis(customerId) {
+  createAnalysis(customerId, company) {
     return this.db.collection('analysis').add({
       userId: this.userId,
       customerId: customerId,
       analysisId: this.db.createId(),
       date: new Date(),
+      companyName: company,
+      companySector: '',
+      companyStaff: 0,
+      companyStuff: '',
+      companyOwning: '',
+      liabilityInsurance: false,
+      contentInsurance: false,
+      buildingInsurance: false,
+      electronicsInsurance: false,
+      machineryInsurance: false,
+      transportInsurance: false,
+      legalInsurance: false,
+      accidentInsurance: false,
     });
+  }
+
+  updateAnalysis(analysisKey, value) {
+    return this.db
+      .collection('analysis')
+      .doc(analysisKey)
+      .update(value);
   }
 }
