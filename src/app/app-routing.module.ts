@@ -4,8 +4,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
-import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
+import { EditCustomerComponent } from './customer-list/edit-customer/edit-customer.component';
+import { EditCustomerResolver } from './customer-list/edit-customer/edit-customer.resolver';
 import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
 import { SingleAnalysisResolver } from './analysis-list/single-analysis/single-analysis.resolver';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
@@ -19,10 +19,10 @@ const routes: Routes = [
     component: CustomerListComponent,
   },
   {
-    path: 'update/:id',
+    path: 'edit/:id',
     canActivate: [AuthGuardService],
-    component: UpdateCustomerComponent,
-    resolve: { data: UpdateCustomerResolver },
+    component: EditCustomerComponent,
+    resolve: { data: EditCustomerResolver },
   },
   {
     path: 'analysis/:id',

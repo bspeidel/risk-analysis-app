@@ -32,7 +32,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   viewDetails(customer) {
-    this.router.navigate(['/update/' + customer.payload.doc.id]);
+    this.router.navigate(['/edit/' + customer.payload.doc.id]);
   }
 
   newCustomer() {

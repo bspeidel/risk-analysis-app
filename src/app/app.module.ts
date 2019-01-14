@@ -16,13 +16,12 @@ import { AnalysisListComponent } from './analysis-list/analysis-list.component';
 import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
 import { SingleAnalysisResolver } from './analysis-list/single-analysis/single-analysis.resolver';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { UpdateCustomerComponent } from './customer-list/update-customer/update-customer.component';
-import { UpdateCustomerResolver } from './customer-list/update-customer/update-customer.resolver';
+import { EditCustomerComponent } from './customer-list/edit-customer/edit-customer.component';
+import { EditCustomerResolver } from './customer-list/edit-customer/edit-customer.resolver';
 import { HeaderComponent } from './header/header.component';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
 import { AuthService } from './services/auth.service';
-import { AnalysisService } from './services/analysis.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FirebaseService } from './services/firebase.service';
 
@@ -43,16 +42,15 @@ import { FirebaseService } from './services/firebase.service';
     AnalysisListComponent,
     SingleAnalysisComponent,
     CustomerListComponent,
-    UpdateCustomerComponent,
+    EditCustomerComponent,
     HeaderComponent,
     NewCustomerComponent,
   ],
   providers: [
     AuthService,
-    AnalysisService,
     AuthGuardService,
     FirebaseService,
-    UpdateCustomerResolver,
+    EditCustomerResolver,
     SingleAnalysisResolver,
     AngularFireAuth,
   ],
