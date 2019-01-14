@@ -24,6 +24,7 @@ import { NewCustomerComponent } from './customer-list/new-customer/new-customer.
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FirebaseService } from './services/firebase.service';
+import { SidebarComponent } from './analysis-list/sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { FirebaseService } from './services/firebase.service';
     EditCustomerComponent,
     HeaderComponent,
     NewCustomerComponent,
+    SidebarComponent,
   ],
   providers: [
     AuthService,
