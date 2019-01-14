@@ -1,0 +1,91 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content">
+    <app-header></app-header>
+    <form [formGroup]="analysisForm" (ngSubmit)="onSubmit(analysisForm.value)">
+      <div class="container-fluid mb-5 mt-3">
+        <div class="row">
+          <div class="col-xl-4">
+            <div id="card_company" class="card card-item pull-up">
+              <img class="card-img-top" src="https://www.zurich.de/_/media/dbe/germany/images/geschaeftskunden/entscheiderschutz_1250x417.jpg?h=417&la=de-DE&w=1250&hash=88C8DCDBDA2D62AF878DA7E775B1353E9EA41A7C"
+                alt="Card image cap">
+              <h5 class="card-title card-title-img">Risiken des Unternehmens</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Haftungsrisiken</strong></li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck2" formControlName="hasVehicles">
+                    <label class="custom-control-label w-100" for="customCheck2">Haftungsrisiken</label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck7">
+                    <label class="custom-control-label w-100" for="customCheck7">Kosten bei Rechtsangelegenheiten</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div id="card_decider" class="card card-item pull-up">
+              <img class="card-img-top" src="https://www.zurich.de/_/media/dbe/germany/images/geschaeftskunden/sach-technik-und-transport/sachversicherung-1250x417.jpg?h=417&la=de-DE&w=1250&hash=7A93BD8FC396ADAEC237411BF5D7D7A5F4D00B98"
+                alt="Card image cap">
+              <h5 class="card-title card-title-img">Sachsubstanz</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck3">
+                    <label class="custom-control-label w-100" for="customCheck3">Gebäude-Werte</label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck4">
+                    <label class="custom-control-label w-100" for="customCheck4">Inhalt-Werte</label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck5">
+                    <label class="custom-control-label w-100" for="customCheck5">Elektronik/Maschinen-Werte</label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck8">
+                    <label class="custom-control-label w-100" for="customCheck8">Transporte</label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck9">
+                    <label class="custom-control-label w-100" for="customCheck9">Kfz-Risiken</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div id="card_staff" class="card card-item pull-up">
+              <img class="card-img-top" src="https://www.zurich.de/_/media/dbe/germany/images/geschaeftskunden/betriebliche-altersvorsorge/bav_pflanze_1250x417.jpg?h=417&la=de-DE&w=1250&hash=287044AAA606334BC62290844187E66F401B8C53"
+                alt="Card image cap">
+              <h5 class="card-title card-title-img">Ertragsausfall</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input w-100" id="customCheck6">
+                    <label class="custom-control-label w-100" for="customCheck6">Unterbrechung Ihres Betriebes</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-bottom fixed-bottom navbar-light justify-content-end">
+        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Speichern</button>
+      </nav>
+    </form>
+  </div>
+</div>
