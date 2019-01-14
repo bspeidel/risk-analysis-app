@@ -6,7 +6,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { EditCustomerComponent } from './customer-list/edit-customer/edit-customer.component';
 import { EditCustomerResolver } from './customer-list/edit-customer/edit-customer.resolver';
-import { SingleAnalysisComponent } from './analysis-list/single-analysis/single-analysis.component';
+import { CompanyDataComponent } from './analysis-list/single-analysis/company-data/company-data.component';
+import { RiskDataComponent } from './analysis-list/single-analysis/risk-data/risk-data.component';
 import { SingleAnalysisResolver } from './analysis-list/single-analysis/single-analysis.resolver';
 import { NewCustomerComponent } from './customer-list/new-customer/new-customer.component';
 
@@ -25,9 +26,15 @@ const routes: Routes = [
     resolve: { data: EditCustomerResolver },
   },
   {
-    path: 'analysis/:id',
+    path: 'analysis/:id/company-data',
     canActivate: [AuthGuardService],
-    component: SingleAnalysisComponent,
+    component: CompanyDataComponent,
+    resolve: { data: SingleAnalysisResolver },
+  },
+  {
+    path: 'analysis/:id/risk-data',
+    canActivate: [AuthGuardService],
+    component: RiskDataComponent,
     resolve: { data: SingleAnalysisResolver },
   },
   {

@@ -25,6 +25,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FirebaseService } from './services/firebase.service';
 import { SidebarComponent } from './analysis-list/sidebar/sidebar.component';
+import { CompanyDataComponent } from './analysis-list/single-analysis/company-data/company-data.component';
+import { RiskDataComponent } from './analysis-list/single-analysis/risk-data/risk-data.component';
 
 @NgModule({
   imports: [
@@ -47,6 +49,8 @@ import { SidebarComponent } from './analysis-list/sidebar/sidebar.component';
     HeaderComponent,
     NewCustomerComponent,
     SidebarComponent,
+    CompanyDataComponent,
+    RiskDataComponent,
   ],
   providers: [
     AuthService,
