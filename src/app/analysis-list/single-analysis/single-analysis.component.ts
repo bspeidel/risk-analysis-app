@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-analysis.component.scss'],
 })
 export class SingleAnalysisComponent implements OnInit {
-  isCompanyData = 'visible';
   constructor() {}
 
   ngOnInit() {}

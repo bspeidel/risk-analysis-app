@@ -52,7 +52,6 @@ export class AnalysisListComponent implements OnInit {
 
   newAnalysis(value) {
     this.firebaseService.createAnalysis(value, this.companyFromParent);
-    this.router.navigate(['/analysis/' + value + '/company-data']);
   }
 
   updateAnalysis(analysis) {
